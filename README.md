@@ -40,7 +40,7 @@ ExpenseMate/
 🚀 Run it locally
 
 1. Clone the repo:  
-   git clone https://github.com/onkarshinde2307/ExpenseMate-MVC8-AdoNet.git
+   git clone  https://github.com/onkarshinde2307/ExpenseMate-MVC8-ADO.NET-.git
 
 2. Open the solution in Visual Studio 2022
 
