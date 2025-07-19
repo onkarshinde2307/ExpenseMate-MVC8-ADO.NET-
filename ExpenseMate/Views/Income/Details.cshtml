@@ -1,0 +1,40 @@
+﻿@model ExpenseMate.Models.Income
+@{
+    ViewData["Title"] = "Income Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow rounded-4 border-0">
+                <div class="card-header bg-white border-0 pb-0">
+                    <h3 class="fw-semibold" style="color: #2f4858;">
+                        <i class="bi bi-info-circle-fill me-2"></i> @ViewData["Title"]
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Date</dt>
+                        <dd class="col-sm-8">@Model.IncomeDate.ToString("dd MMM yyyy")</dd>
+
+                        <dt class="col-sm-4 text-muted">Source</dt>
+                        <dd class="col-sm-8">@Model.Source</dd>
+
+                        <dt class="col-sm-4 text-muted">Amount</dt>
+                        <dd class="col-sm-8">₹@Model.Amount.ToString("N2")</dd>
+                    </dl>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="/Income/Index" class="btn btn-outline-secondary px-4 rounded-pill">
+                            <i class="bi bi-arrow-left me-1"></i> Back
+                        </a>
+                        <a href="/Income/Edit/@Model.Id" class="btn btn-outline-primary px-4 rounded-pill">
+                            <i class="bi bi-pencil-square me-1"></i> Edit
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

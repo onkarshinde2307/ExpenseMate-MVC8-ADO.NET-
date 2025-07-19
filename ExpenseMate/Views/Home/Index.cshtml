@@ -1,0 +1,210 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Montserrat font import for the heading -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+<style>
+    body {
+        background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+        font-family: 'Segoe UI', sans-serif;
+        color: #2b2d42;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #1b1b2f, #162447);
+        color: white;
+        padding: 60px 30px;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 1.2px;
+    }
+
+        .hero h1 {
+            font-weight: 900;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-family: 'Georgia', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.85;
+            letter-spacing: 0.05em;
+            margin-top: 0;
+        }
+
+    .glass-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        transition: all 0.3s ease;
+        border-left: 6px solid #1f4068;
+    }
+
+        .glass-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.1);
+        }
+
+    .icon-title {
+        font-size: 1rem;
+        color: #5c5c5c;
+    }
+
+    .amount {
+        font-size: 2.2rem;
+        font-weight: 700;
+    }
+
+    .quote {
+        background: #1f4068;
+        color: white;
+        padding: 20px 30px;
+        font-family: 'Georgia', serif;
+        font-size: 1.25rem;
+        font-style: italic;
+        border-radius: 12px;
+        margin-top: 25px;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 4px 10px rgba(31,64,104,0.5);
+        line-height: 1.5;
+        letter-spacing: 0.03em;
+    }
+
+    .btn-neu {
+        background-color: #1b1b2f;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 14px;
+        transition: 0.2s ease-in-out;
+    }
+
+        .btn-neu:hover {
+            background-color: #162447;
+            color: #ffffff;
+        }
+
+    .section-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #1f4068;
+        margin-bottom: 20px;
+    }
+
+    .table thead {
+        background-color: #1b1b2f;
+        color: white;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1faff;
+    }
+</style>
+
+<div class="container mt-4 mb-5">
+    <!-- Hero Section -->
+    <div class="hero mb-4">
+        <h1>
+            Welcome Onkar Shinde to ExpenseMate💸</h1>
+        <p>“Plan your budget, control your future.”</p>
+    </div>
+
+    <!-- Finance Quote -->
+    <div class="quote text-center">
+        Where Dreams Get Wings!🦅 – Onkar Shinde
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="row mt-5 g-4 text-center">
+        <div class="col-md-3">
+            <div class="glass-card">
+                <div class="icon-title"><i class="bi bi-calendar-event me-1"></i> Today's Expense</div>
+                <div class="amount text-warning">₹@ViewBag.TodayExpenseTotal</div>
+                <small>@DateTime.Today.ToString("dd MMM yyyy")</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-card">
+                <div class="icon-title"><i class="bi bi-cash-stack me-1"></i> Monthly Income</div>
+                <div class="amount text-primary">₹@ViewBag.MonthIncome</div>
+                <small>@DateTime.Today.ToString("MMMM yyyy")</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-card">
+                <div class="icon-title"><i class="bi bi-cart-dash-fill me-1"></i> Monthly Expense</div>
+                <div class="amount text-success">₹@ViewBag.MonthTotal</div>
+                <small>@DateTime.Today.ToString("MMMM yyyy")</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-card">
+                <div class="icon-title"><i class="bi bi-wallet2 me-1"></i> Remaining Balance</div>
+                <div class="amount text-danger">₹@ViewBag.RemainingBalance</div>
+                <small>@DateTime.Today.ToString("MMMM yyyy")</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expense Table + Buttons -->
+    <div class="d-flex justify-content-between align-items-center mt-5">
+        <h4 class="section-title">🧾 Today's Expenses</h4>
+        <div>
+            <a href="/Expense/Create" class="btn btn-neu me-2">
+                <i class="bi bi-plus-circle"></i> Add Expense
+            </a>
+            <a href="/Income/Create" class="btn btn-neu me-2">
+                <i class="bi bi-currency-exchange"></i> Add Income
+            </a>
+            <a href="/Expense/Index" class="btn btn-outline-secondary">
+                <i class="bi bi-list-ul"></i> View All
+            </a>
+        </div>
+    </div>
+
+    @if (ViewBag.TodayExpenses != null && ViewBag.TodayExpenses.Count > 0)
+    {
+        <div class="table-responsive mt-3">
+            <table class="table table-bordered rounded shadow-sm">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th class="text-end">Amount (₹)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var expense in ViewBag.TodayExpenses)
+                    {
+                        <tr>
+                            <td>@expense.ExpenseDate.ToString("dd MMM yyyy")</td>
+                            <td>@expense.CategoryName</td>
+                            <td>@expense.Description</td>
+                            <td class="text-end text-danger fw-bold">@expense.Amount</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center mt-4">
+            <i class="bi bi-emoji-frown-fill"></i> No expenses recorded today.
+        </div>
+    }
+</div>

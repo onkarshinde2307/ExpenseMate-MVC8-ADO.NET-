@@ -1,0 +1,105 @@
+﻿@model List<ExpenseMate.Models.Expense>
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary-emphasis">💼 Expense Ledger</h2>
+        <a href="/Expense/Create" class="btn btn-gradient px-4 py-2 rounded-pill shadow">
+            ➕ Add Expense
+        </a>
+    </div>
+
+    <!-- Quote Box -->
+    <div class="p-4 rounded-4 shadow-sm" style="background-color: #f0f9ff; border-left: 4px solid #0d6efd;">
+        <h5 class="mb-1 text-dark">🧠 “Save mindfully, spend wisely.”</h5>
+        <p class="text-muted mb-0">Track where every rupee goes, Onkar — your future self will thank you. 💰</p>
+    </div>
+
+    <!-- Expense Table -->
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center shadow-sm mt-4">
+            No expenses added yet. Start logging your costs today 🌱
+        </div>
+    }
+    else
+    {
+        <div class="card shadow mt-4">
+            <div class="card-body p-0">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ExpenseDate.ToString("dd MMM yyyy")</td>
+                                <td>@item.CategoryName</td>
+                                <td>@item.Description</td>
+                                <td><strong>₹@item.Amount.ToString("N2")</strong></td>
+                                <td>
+                                    <a href="/Expense/Edit/@item.Id" class="btn btn-sm btn-outline-primary rounded-pill me-2">✏️ Edit</a>
+                                    <a href="/Expense/Delete/@item.Id" class="btn btn-sm btn-outline-danger rounded-pill">🗑️ Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        background-color: #eef4f7;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+    }
+
+    .card {
+        border-radius: 1rem;
+    }
+
+    .rounded-4 {
+        border-radius: 1.25rem !important;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Gradient Button Styling (same as Save) */
+    .btn-gradient {
+        background: linear-gradient(135deg, #1b1b2f, #162447);
+        color: #fff;
+        border: none;
+        transition: 0.3s ease;
+    }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #0f0c29, #302b63);
+            color: #fff;
+        }
+</style>

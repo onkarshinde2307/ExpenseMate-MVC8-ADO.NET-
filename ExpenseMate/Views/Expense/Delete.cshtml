@@ -1,0 +1,45 @@
+﻿@model ExpenseMate.Models.Expense
+@{
+    ViewData["Title"] = "Delete Expense";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body px-5 py-4">
+
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-danger fw-semibold mb-0">🗑️ @ViewData["Title"]</h2>
+                <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-4">⬅️ Back</a>
+            </div>
+
+            <!-- Expense Info -->
+            <div class="mb-3">
+                <p class="mb-1"><strong>📅 Date:</strong> @Model.ExpenseDate.ToString("dd MMM yyyy")</p>
+                <p class="mb-1"><strong>📂 Category:</strong> @Model.CategoryName</p>
+                <p class="mb-1"><strong>📝 Description:</strong> @Model.Description</p>
+                <p class="mb-3"><strong>💰 Amount:</strong> ₹@Model.Amount.ToString("N2")</p>
+                <p class="text-muted fst-italic">⚠️ Once deleted, this expense will be permanently removed.</p>
+            </div>
+
+            <!-- Delete Form -->
+            <form method="post">
+                <div class="d-flex gap-3 mt-4">
+                    <button type="submit" class="btn btn-danger px-4 rounded-pill">✔️ Yes, Delete</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary px-4 rounded-pill">❌ Cancel</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f4f6f9;
+    }
+
+    .card {
+        background-color: #ffffff;
+    }
+</style>

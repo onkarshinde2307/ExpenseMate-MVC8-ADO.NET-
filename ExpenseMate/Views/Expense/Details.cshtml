@@ -1,0 +1,32 @@
+﻿@model ExpenseMate.Models.Expense
+@{
+    ViewData["Title"] = "Expense Details";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-primary fw-semibold">📋 @ViewData["Title"]</h2>
+
+    <div class="card shadow-sm rounded-4 p-4 bg-light">
+        <div class="mb-3">
+            <strong>Date:</strong>
+            <span class="ms-2">@Model.ExpenseDate.ToString("dd MMM yyyy")</span>
+        </div>
+        <div class="mb-3">
+            <strong>Category:</strong>
+            <span class="ms-2">@Model.CategoryName</span>
+        </div>
+        <div class="mb-3">
+            <strong>Description:</strong>
+            <span class="ms-2">@Model.Description</span>
+        </div>
+        <div class="mb-3">
+            <strong>Amount:</strong>
+            <span class="ms-2">₹@Model.Amount.ToString("N2")</span>
+        </div>
+
+        <div class="mt-4">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary rounded-pill me-2">✏️ Edit</a>
+            <a asp-action="Index" class="btn btn-secondary rounded-pill">🔙 Back</a>
+        </div>
+    </div>
+</div>
