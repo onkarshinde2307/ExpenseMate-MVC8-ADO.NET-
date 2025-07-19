@@ -44,12 +44,8 @@ ExpenseMate/
 
 2. Open the solution in Visual Studio 2022
 
-3. Configure your database in `appsettings.json`:  
-   "ConnectionStrings": {  
-     "DefaultConnection": "Server=ONKAR-SHINDE\\SQLEXPRESS01;Database=DummyExpenseMateDemoDB;Trusted_Connection=True;"  
-   }
-
-4. Press Ctrl + F5 to run the app  
+ 
+3. Press Ctrl + F5 to run the app  
 
 Now open your browser — you’ll land on a beautiful dashboard showing:  
 → Today's Expenses 💸  
