@@ -69,6 +69,6 @@ GitHub: [@onkarshinde2307](https://github.com/onkarshinde2307)
 
 🌟 Give it a Star  
 If you found this project helpful, please ⭐ it on GitHub  
-→ [github.com/onkarshinde2307/ExpenseMate-MVC8-AdoNet](https://github.com/onkarshinde2307/ExpenseMate-MVC8-AdoNet)
+→ [github.com/onkarshinde2307/ExpenseMate-MVC8-AdoNet](https://github.com/onkarshinde2307/ExpenseMate-MVC8-ADO.NET-)
 
 Your support motivates me to build more cute and useful apps like this 🌸
