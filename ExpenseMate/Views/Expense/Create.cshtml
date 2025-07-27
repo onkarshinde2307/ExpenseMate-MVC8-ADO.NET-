@@ -16,13 +16,40 @@
             <div class="row g-4">
                 <div class="col-md-6">
                     <label asp-for="ExpenseDate" class="form-label fw-semibold">📅 Date</label>
-                    <input asp-for="ExpenseDate" type="date" class="form-control rounded-3" required />
+                    <input asp-for="ExpenseDate" type="date" class="form-control rounded-3" required max="@DateTime.Today.ToString("yyyy-MM-dd")" />
                 </div>
+
 
                 <div class="col-md-6">
                     <label asp-for="CategoryName" class="form-label fw-semibold">📂 Category</label>
-                    <input asp-for="CategoryName" type="text" class="form-control rounded-3" required />
+                    <select asp-for="CategoryName" class="form-select rounded-3" id="categorySelect" required>
+                        <option value="">-- Select Category --</option>
+                        <option>Groceries</option>
+                        <option>Vegetables & Fruits</option>
+                        <option>Milk & Dairy</option>
+                        <option>Health & Medicine</option>
+                        <option>Mobile Recharge</option>
+                        <option>WIFI Recharge</option>
+                        <option>Electricity</option>
+                        <option>Cooking Gas</option>
+                        <option>Water Bill</option>
+                        <option>Petrol</option>
+                        <option>Transport</option>
+                        <option>Snacks & Beverages</option>
+                        <option>Food</option>
+                        <option>Food Delivery</option>
+                        <option>Stationery</option>
+                        <option>Laundry</option>
+                        <option>Toiletries</option>
+                        <option>Saloon</option>
+                        <option>Entertainment</option>
+                        <option>Rent</option>
+                        <option>Monthly PF</option>
+                        <option>Others</option>
+                    </select>
                 </div>
+
+
 
                 <div class="col-md-12">
                     <label asp-for="Description" class="form-label fw-semibold">📝 Description</label>

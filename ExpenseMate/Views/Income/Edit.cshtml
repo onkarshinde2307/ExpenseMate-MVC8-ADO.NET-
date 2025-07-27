@@ -17,13 +17,14 @@
 
                     <div class="mb-3">
                         <label asp-for="IncomeDate" class="form-label">Date</label>
-                        <input asp-for="IncomeDate" type="date" class="form-control" />
+                        <input asp-for="IncomeDate" type="date" class="form-control" max="@DateTime.Now.ToString("yyyy-MM-dd")" />
                         <span asp-validation-for="IncomeDate" class="text-danger"></span>
                     </div>
 
+
                     <div class="mb-3">
                         <label asp-for="Source" class="form-label">Source</label>
-                        <input asp-for="Source" class="form-control" placeholder="e.g. Salary, Freelance" />
+                        <input asp-for="Source" class="form-control" readonly />
                         <span asp-validation-for="Source" class="text-danger"></span>
                     </div>
 

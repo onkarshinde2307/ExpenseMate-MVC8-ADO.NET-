@@ -14,15 +14,40 @@
         <form asp-action="Create" method="post">
             <div class="mb-4">
                 <label asp-for="IncomeDate" class="form-label fw-semibold">📅 Date</label>
-                <input asp-for="IncomeDate" type="date" class="form-control rounded-3" required />
+                <input asp-for="IncomeDate" type="date" class="form-control rounded-3" required id="incomeDate" />
                 <span asp-validation-for="IncomeDate" class="text-danger"></span>
             </div>
 
             <div class="mb-4">
                 <label asp-for="Source" class="form-label fw-semibold">📂 Source</label>
-                <input asp-for="Source" type="text" class="form-control rounded-3" placeholder="e.g. Family, Part-time job" required />
+                <select asp-for="Source" id="sourceSelect" class="form-select rounded-3" required>
+                    <option value="">-- Select or type Source --</option>
+                    <option>Salary</option>
+                    <option>Freelancing</option>
+                    <option>Part-Time Job</option>
+                    <option>Stock Dividends</option>
+                    <option>Rental Income</option>
+                    <option>Interest from Savings</option>
+                    <option>Cashback/Rewards</option>
+                    <option>Selling Old Items</option>
+                    <option>Affiliate Earnings</option>
+                    <option>Blog Monetization</option>
+                    <option>YouTube Revenue</option>
+                    <option>Gift Money</option>
+                    <option>Tutoring</option>
+                    <option>Online Course Sales</option>
+                    <option>Investment Returns</option>
+                    <option>Consulting Fees</option>
+                    <option>Social Media Sponsorship</option>
+                    <option>App Referral Bonus</option>
+                    <option>Government Grant</option>
+                    <option>Other Source</option>
+                </select>
                 <span asp-validation-for="Source" class="text-danger"></span>
             </div>
+
+
+
 
             <div class="mb-4">
                 <label asp-for="Amount" class="form-label fw-semibold">💰 Amount</label>
@@ -38,9 +63,34 @@
     </div>
 </div>
 
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        // Disable future dates
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById("incomeDate").setAttribute("max", today);
+        });
+
+        // Enable Select2 with tagging for manual input
+        $(document).ready(function () {
+            $('#sourceSelect').select2({
+                placeholder: "-- Select or type source --",
+                tags: true,
+                width: '100%',
+                allowClear: true
+            });
+        });
+    </script>
+}
+
+@section Styles {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+}
+
 <style>
     .form-label {
-        color: #2f7a2a; /* Dark green */
+        color: #2f7a2a;
     }
 
     .rounded-3 {
